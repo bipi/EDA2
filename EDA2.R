@@ -10,7 +10,7 @@ plot(names(plot1),plot1, type='l')
 #2
 
 plot2<-tapply(NEI$Emissions[NEI$fips == "24510"], NEI$year[NEI$fips == "24510"], sum)
-plot(names(plot2),plot2, type='l')
+plot(names(plot2),plot2, type='l') 
 
 #3
 <<<<<<< HEAD
