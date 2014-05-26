@@ -1,4 +1,4 @@
-setwd("C:/Users/barto_000/Desktop/r/EDA2/git")
+#setwd("C:/Users/barto_000/Desktop/r/EDA2/git")
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
@@ -29,3 +29,11 @@ SCCmv<-SCCm$SCC
 NEIm<-subset.data.frame(NEI, SCC %in% SCCmv)
 plot4<-tapply(NEIm$Emissions, NEIm$year, sum)
 plot(names(plot4),plot4, type='l')
+
+#5
+plot5<-tapply(NEI$Emissions[NEI$fips == "24510"],
+              list(NEI$year[NEI$fips == "24510"], NEI$type[NEI$fips == "24510"]),
+              sum)
+plot5<-as.data.frame(plot5)
+names(plot5)<-c('nonroad','nonpoint','onroad','point')
+plot(row.names(plot5),plot5$onroad, type='l')
